@@ -6,10 +6,7 @@ import Main from "./components/Main"
 function App() {
   return (
     <Grid
-      templateAreas={{
-        base: `"nav" "main" "footer"`,
-        lg: `"nav nav" "main main" "footer footer"`,
-      }}
+      templateAreas={`"nav" "main" "footer"`}
     >
       <GridItem area="nav">
         <NavBar></NavBar>

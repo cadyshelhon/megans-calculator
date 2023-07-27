@@ -4,7 +4,7 @@ import HistoryCard from "./HistoryCard";
 
 const Main = () => {
   return (
-    <Flex bg="lavender" justify="center" direction={["column", "row"]}>
+    <Flex bg="lavender" justify="center" direction={["column", "row"]} gap={5} p={5}>
         <CalculatorCard title="Calculate"></CalculatorCard>
         <HistoryCard title="History"></HistoryCard>
     </Flex>

@@ -6,7 +6,7 @@ interface Props {
 
 const HistoryCard = ({ title }: Props) => {
   return (
-    <Container m={5}>
+    <Container>
       <Card>
         <CardHeader>
           <Heading size="md">{title}</Heading>
