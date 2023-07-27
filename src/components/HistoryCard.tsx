@@ -10,6 +10,7 @@ import {
   Button,
 } from "@chakra-ui/react";
 import { Result } from "../types";
+import CalculatorResult from "./CalculatorResult";
 
 interface Props {
   title: string;
@@ -36,7 +37,7 @@ const HistoryCard = ({ title, results, onDelete }: Props) => {
                   m={2}
                   variant="outline"
                 >
-                  <Text><b>Days Supply:</b> {result.result}</Text>
+                  <CalculatorResult result={result}><b>Days Supply:</b> {result.result}</CalculatorResult>
                   <Button onClick={() => onDelete(result.id)}>Delete</Button>
                 </Card>
               </ListItem>

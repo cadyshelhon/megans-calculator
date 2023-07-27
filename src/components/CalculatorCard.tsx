@@ -29,7 +29,7 @@ const CalculatorCard = ({ title, setResults, currentResults }: Props) => {
           <DaysSupplyCalculator onSubmit={newResult => {
             const cadenceValue = timeValueMap.get(newResult.cadence);
             if(cadenceValue) {
-              const daysSupply =  ( newResult.totalQuantity / newResult.dose * newResult.dosePerDay ) * cadenceValue;
+              const daysSupply =  ( newResult.totalQuantity / (newResult.dose * newResult.dosePerDay) ) * cadenceValue;
               setResults([...currentResults, {...newResult, id: currentResults.length + 1, result: daysSupply}]);
             }
           }}></DaysSupplyCalculator>

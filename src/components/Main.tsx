@@ -26,7 +26,7 @@ const Main = () => {
       <CalculatorCard
         currentResults={results}
         setResults={setResults}
-        title="Calculate"
+        title="Calculate Days Supply"
       ></CalculatorCard>
       <HistoryCard title="History" results={results} onDelete={(id) => setResults(results.filter(e => e.id !== id))}></HistoryCard>
     </Flex>
