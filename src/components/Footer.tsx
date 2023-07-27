@@ -9,6 +9,7 @@ import {
   Link,
   useColorModeValue,
   VisuallyHidden,
+  Flex,
 } from "@chakra-ui/react";
 import { ExternalLinkIcon } from "@chakra-ui/icons";
 import { FaGithub } from "react-icons/fa";
@@ -57,19 +58,20 @@ export default function SmallWithSocial() {
         maxW={"6xl"}
         py={4}
         direction={{ base: "column", md: "row" }}
-        spacing={4}
+        spacing={2}
         justify={{ base: "center", md: "space-between" }}
         align={{ base: "center", md: "center" }}
       >
-        <Text>© 2023 Cady Shelhon. All rights reserved.</Text>
         <Link
           color="purple"
           href="https://www.flaticon.com/free-icons/healthcare-and-medical"
           isExternal
+          textAlign={"center"}
         >
           Healthcare and medical icons created by Icongeek26 - Flaticon
           <ExternalLinkIcon mx="2px" />
         </Link>
+        <Text>© 2023 Cady Shelhon. All rights reserved.</Text>
         <Stack direction={"row"} spacing={6}>
           <SocialButton
             label={"Github"}

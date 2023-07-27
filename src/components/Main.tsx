@@ -1,12 +1,34 @@
-import { Stack, Flex } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
+import { useState } from "react";
 import CalculatorCard from "./CalculatorCard";
 import HistoryCard from "./HistoryCard";
 
+interface Result {
+    id: number,
+    result: number,
+    totalQuantity: number,
+    dose: number,
+    dosePerDay: number,
+    cadence: string
+}
+
 const Main = () => {
+  const [results, setResults] = useState([] as Result[]);
+
   return (
-    <Flex bg="lavender" justify="center" direction={["column", "row"]} gap={5} p={5}>
-        <CalculatorCard title="Calculate"></CalculatorCard>
-        <HistoryCard title="History"></HistoryCard>
+    <Flex
+      bg="lavender"
+      justify="center"
+      direction={["column", "row"]}
+      gap={5}
+      p={5}
+    >
+      <CalculatorCard
+        currentResults={results}
+        setResults={setResults}
+        title="Calculate"
+      ></CalculatorCard>
+      <HistoryCard title="History" results={results} onDelete={(id) => setResults(results.filter(e => e.id !== id))}></HistoryCard>
     </Flex>
   );
 };
