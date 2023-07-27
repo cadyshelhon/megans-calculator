@@ -7,7 +7,7 @@ import {
   List,
   ListItem,
   Text,
-  Button,
+  CloseButton,
 } from "@chakra-ui/react";
 import { Result } from "../types";
 import CalculatorResult from "./CalculatorResult";
@@ -38,7 +38,7 @@ const HistoryCard = ({ title, results, onDelete }: Props) => {
                   variant="outline"
                 >
                   <CalculatorResult result={result}><b>Days Supply:</b> {result.result}</CalculatorResult>
-                  <Button onClick={() => onDelete(result.id)}>Delete</Button>
+                  <CloseButton onClick={() => onDelete(result.id)}></CloseButton>
                 </Card>
               </ListItem>
             ))}

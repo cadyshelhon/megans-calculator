@@ -19,7 +19,7 @@ interface Props {
 
 const CalculatorResult = ({children, result}: Props) => {
   return (
-    <Accordion variant="" allowToggle={true}>
+    <Accordion m={2} allowToggle={true}>
       <AccordionItem >
         <h2>
           <AccordionButton>
