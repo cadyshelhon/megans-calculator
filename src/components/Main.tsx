@@ -14,7 +14,7 @@ const Main = () => {
       direction={["column", "row"]}
       gap={5}
       p={5}
-      h="100vh"
+      maxWidth={["100vh", "100%"]}
     >
       <CalculatorCard
         currentResults={results}
