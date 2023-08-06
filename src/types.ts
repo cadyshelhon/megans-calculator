@@ -4,5 +4,6 @@ export interface Result {
     totalQuantity: number,
     dose: number,
     dosePerDay: number,
-    cadence: string
+    cadence: string,
+    custom?: number
 }

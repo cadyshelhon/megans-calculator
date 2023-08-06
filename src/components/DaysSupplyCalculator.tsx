@@ -15,12 +15,14 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { timePeriods } from "../timePeriods";
+import { useState } from "react";
 
 const schema = z.object({
   totalQuantity: z.number(),
   dose: z.number(),
   dosePerDay: z.number(),
   cadence: z.enum(timePeriods),
+  custom: z.number().optional()
 });
 
 type CalculatorFormData = z.infer<typeof schema>;
@@ -30,10 +32,12 @@ interface Props {
 }
 
 const DaysSupplyCalculator = ({ onSubmit }: Props) => {
+  const [custom, setCustom] = useState(false);
   const {
     register,
     handleSubmit,
     formState: { errors },
+    setValue
   } = useForm<CalculatorFormData>({
     resolver: zodResolver(schema),
   });
@@ -53,7 +57,7 @@ const DaysSupplyCalculator = ({ onSubmit }: Props) => {
         </NumberInput>
         <FormErrorMessage></FormErrorMessage>
       </FormControl>
-      <FormControl>
+      <FormControl mt={3}>
         <FormLabel>Dose Quantity</FormLabel>
         <NumberInput>
           <NumberInputField {...register("dose", { valueAsNumber: true })} />
@@ -64,7 +68,7 @@ const DaysSupplyCalculator = ({ onSubmit }: Props) => {
         </NumberInput>
         <FormErrorMessage></FormErrorMessage>
       </FormControl>
-      <FormControl>
+      <FormControl mt={3}>
         <FormLabel>Doses Per Day</FormLabel>
         <NumberInput>
           <NumberInputField
@@ -77,13 +81,36 @@ const DaysSupplyCalculator = ({ onSubmit }: Props) => {
         </NumberInput>
         <FormErrorMessage></FormErrorMessage>
       </FormControl>
-      <FormControl>
+      <FormControl mt={3}>
         <FormLabel>Cadence</FormLabel>
-        <Select placeholder="Select option" {...register("cadence")}>
-          {timePeriods.map(timePeriod => <option key={timePeriod} value={timePeriod}>{timePeriod}</option>)}
+        <Select placeholder="Select option" {...register("cadence")} onChange={(e) => {
+          if(e.target.value === "Custom") setCustom(true);
+          else { setCustom(false); setValue("custom", undefined) }
+        }}>
+          {timePeriods.map((timePeriod) => (
+            <option key={timePeriod} value={timePeriod}>
+              {timePeriod}
+            </option>
+          ))}
         </Select>
-        <FormErrorMessage></FormErrorMessage>
+        <FormErrorMessage>{errors.cadence?.message}</FormErrorMessage>
       </FormControl>
+
+      {custom && (
+        <FormControl mt={3}>
+          <FormLabel>Every (x) days</FormLabel>
+          <NumberInput>
+            <NumberInputField
+              {...register("custom", { valueAsNumber: true })}
+            />
+            <NumberInputStepper>
+              <NumberIncrementStepper />
+              <NumberDecrementStepper />
+            </NumberInputStepper>
+          </NumberInput>
+          <FormErrorMessage></FormErrorMessage>
+        </FormControl>
+      )}
 
       <Button mt={4} colorScheme="purple" type="submit">
         Submit

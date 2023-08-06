@@ -25,7 +25,7 @@ const HistoryCard = ({ title, results, onDelete }: Props) => {
         <CardHeader>
           <Heading size="md">{title}</Heading>
         </CardHeader>
-        <CardBody overflowY="auto" maxHeight={385}>
+        <CardBody overflowY="auto" maxHeight={600}>
           <List>
             {results?.map((result) => (
               <ListItem>

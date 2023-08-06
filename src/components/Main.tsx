@@ -2,15 +2,7 @@ import { Flex } from "@chakra-ui/react";
 import { useState } from "react";
 import CalculatorCard from "./CalculatorCard";
 import HistoryCard from "./HistoryCard";
-
-interface Result {
-    id: number,
-    result: number,
-    totalQuantity: number,
-    dose: number,
-    dosePerDay: number,
-    cadence: string
-}
+import { Result } from "../types";
 
 const Main = () => {
   const [results, setResults] = useState([] as Result[]);
@@ -22,6 +14,7 @@ const Main = () => {
       direction={["column", "row"]}
       gap={5}
       p={5}
+      h="100vh"
     >
       <CalculatorCard
         currentResults={results}

@@ -32,7 +32,7 @@ const CalculatorResult = ({children, result}: Props) => {
         <AccordionPanel pb={4}>
           <List>
             <ListItem>
-                <Text>{ `( ${result.totalQuantity} total units / ( ${result.dose} units * ${result.dosePerDay}x per day ) ) * ${result.cadence} = ${result.result} days supply`}</Text>
+                <Text>{ `( ${result.totalQuantity} total units / ( ${result.dose} units * ${result.dosePerDay}x per day ) ) * ${result.custom ? result.custom : result.cadence} = ${result.result} days supply`}</Text>
             </ListItem>
           </List>
         </AccordionPanel>
